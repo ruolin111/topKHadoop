@@ -2,23 +2,34 @@
 
 ## Team members' names 
 
-1. Student Name:
+1. Student Name: Ruolin Dong
 
-   Student UT EID:
-
-2. Student Name:
-
-   Student UT EID:
-
- ...
+   Student UT EID: rd32966
 
 ##  Course Name: CS378 - Cloud Computing 
 
-##  Unique Number: 51515
+##  Unique Number: 53030
     
 
 
-# Add your Project REPORT HERE 
+## Task 1 - Top-10 Words in Book-Tiny.txt
+
+````
+the	13851
+of	6638
+and	6000
+a	4549
+to	4529
+in	3904
+that	2692
+his	2428
+I	1723
+with	1695
+````
+
+## Task 2 - Generate a sorted list of all the word counts in Book-Tiny.txt
+
+Output file: output.txt
 
 
 # Project Template
