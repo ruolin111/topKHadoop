@@ -48,27 +48,27 @@ public class TopKReducer extends  Reducer<Text, IntWritable, Text, IntWritable> 
        // size of values is 1 because key only has one distinct value
        for (IntWritable value : values) {
            counter = counter + 1;
-           logger.info("Reducer Text: counter is " + counter);
-           logger.info("Reducer Text: Add this item  " + new WordAndCount(key, value).toString());
+//           logger.info("Reducer Text: counter is " + counter);
+//           logger.info("Reducer Text: Add this item  " + new WordAndCount(key, value).toString());
 
            pq.add(new WordAndCount(new Text(key), new IntWritable(value.get()) ) );
 
-           logger.info("Reducer Text: " + key.toString() + " , Count: " + value.toString());
-           logger.info("PQ Status: " + pq.toString());
+//           logger.info("Reducer Text: " + key.toString() + " , Count: " + value.toString());
+//           logger.info("PQ Status: " + pq.toString());
        }
 
-       // keep the priorityQueue size <= heapSize
-       while (pq.size() > 10) {
-           pq.poll();
-       }
+//       // keep the priorityQueue size <= heapSize
+//       while (pq.size() > 10) {
+//           pq.poll();
+//       }
 
 
    }
 
 
     public void cleanup(Context context) throws IOException, InterruptedException {
-        logger.info("TopKReducer cleanup cleanup.");
-        logger.info("pq.size() is " + pq.size());
+//        logger.info("TopKReducer cleanup cleanup.");
+//        logger.info("pq.size() is " + pq.size());
 
         List<WordAndCount> values = new ArrayList<WordAndCount>(10);
 
@@ -76,8 +76,8 @@ public class TopKReducer extends  Reducer<Text, IntWritable, Text, IntWritable> 
             values.add(pq.poll());
         }
 
-        logger.info("values.size() is " + values.size());
-        logger.info(values.toString());
+//        logger.info("values.size() is " + values.size());
+//        logger.info(values.toString());
 
 
         // reverse so they are ordered in descending order
@@ -86,7 +86,7 @@ public class TopKReducer extends  Reducer<Text, IntWritable, Text, IntWritable> 
 
         for (WordAndCount value : values) {
             context.write(value.getWord(), value.getCount());
-            logger.info("TopKReducer - Top-10 Words are:  " + value.getWord() + "  Count:"+ value.getCount());
+//            logger.info("TopKReducer - Top-10 Words are:  " + value.getWord() + "  Count:"+ value.getCount());
         }
 
 
