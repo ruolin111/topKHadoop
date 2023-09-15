@@ -20,7 +20,6 @@ public class TopKMapper extends Mapper<Text, Text, Text, IntWritable> {
 
 	public void setup(Context context) {
 		pq = new PriorityQueue<>();
-
 	}
 
 	/**
@@ -37,9 +36,9 @@ public class TopKMapper extends Mapper<Text, Text, Text, IntWritable> {
 
 		pq.add(new WordAndCount(new Text(key), new IntWritable(count)) );
 
-		if (pq.size() > 10) {
-			pq.poll();
-		}
+//		if (pq.size() > 10) {
+//			pq.poll();
+//		}
 	}
 
 	public void cleanup(Context context) throws IOException, InterruptedException {
@@ -48,7 +47,7 @@ public class TopKMapper extends Mapper<Text, Text, Text, IntWritable> {
 		while (pq.size() > 0) {
 			WordAndCount wordAndCount = pq.poll();
 			context.write(wordAndCount.getWord(), wordAndCount.getCount());
-			logger.info("TopKMapper PQ Status: " + pq.toString());
+//			logger.info("TopKMapper PQ Status: " + pq.toString());
 		}
 	}
 
